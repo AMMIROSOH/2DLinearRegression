@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 import math
 
 class LinearRegression:
@@ -72,6 +73,15 @@ class LinearRegression:
         # Y Intercept Formula:
         # Yavg - Slope * Xavg
         self.y_intercept = self.y_average - self.slope * self.x_average
+
+    def draw(self):
+        plt.plot(self.x_list, self.y_list, 'o')
+        axes = plt.gca()
+        x_vals = np.array(axes.get_xlim())
+        y_vals = self.y_intercept + self.slope * x_vals
+        plt.plot(x_vals, y_vals, 'r')
+        plt.show()
+
 
     def predictY(self, x):
         return (x * self.slope + self.y_intercept)

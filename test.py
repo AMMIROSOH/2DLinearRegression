@@ -1,7 +1,5 @@
 import csv
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from main import LinearRegression
 
 file = pd.read_csv('student-mat.csv', sep=";")
@@ -15,12 +13,8 @@ for i in range(0, length):
 
 
 ln = LinearRegression([absences, failures], sliced=True)
+ln.draw()
 
-plt.plot(absences, failures, 'o')
-axes = plt.gca()
-x_vals = np.array(axes.get_xlim())
-y_vals = ln.y_intercept + ln.slope * x_vals
-plt.plot(x_vals, y_vals, 'r')
-plt.show()
+
 
             
